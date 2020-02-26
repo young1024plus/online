@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('header') %>
+
+
+    <h2>ejs index</h2>
+
+
+    <ul>
+    <% for(var i=0; i<list.length; i++){ %>
+        <li> <%- list[i].name %></li>
+    <% } %>
+    </ul>
+</body>
+</html>

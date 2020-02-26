@@ -1,0 +1,28 @@
+show dbs //显示所有数据库
+use  test  //选择数据库
+db.test.insert({name:'young'}) //插入一条数据库
+
+use test
+show  collections //显示所有集合
+
+db.createCollection('test2')  //创建一个集合
+db.test3.drop()  //删除一个集合
+
+
+db.test.find({name:'young'})  //查找
+
+db.test.update({name:'yy'},{name:'yy',age:18})  //覆盖修改 
+
+db.test.update({name:'yy'},{$set:{age:20}}) // 只修改某一个字段
+
+db.test.insert({name:'young1'})
+db.test.insert({name:'young2'})
+db.test.insert({name:'young3'})
+db.test.insert({name:'young4'})
+
+db.test.remove({name:'young4'})
+
+db.test.find().limit(2)  //限制 条数
+db.test.find().sort({name: 1})  //根据字段排序   1 升序 , -1降序
+
+
