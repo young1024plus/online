@@ -9,6 +9,9 @@ const jwt = require('jsonwebtoken');
 const usermodel = require('./models/userModel');
 const tokenmodel = require('./models/token');
 const newsmodel = require('./models/newsModel');
+const collectmodel = require('./models/collectModel');
+
+
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -220,9 +223,6 @@ app.post('/news',(req,res)=>{
 
 })
 
-
-
-
 app.post('/search',(req,res)=>{
     var keyword = req.body.keyword;
     var size = req.body.size? parseInt(req.body.size):20;
@@ -278,9 +278,97 @@ app.post('/newsinfo',(req,res)=>{
             data:''
         })
     }
-    
+})
+
+
+app.post('/collect',(req,res)=>{
+    var uid = req.body.uid;
+    var aid = req.body.aid;
+    if(uid && aid){
+        var coll = new collectmodel({
+            uid,
+            aid
+        })
+        coll.save((err,cnews)=>{
+            if(err){
+                res.json({
+                    status:'fail',
+                    msg: '收藏失败',
+                    data: err  //err 不应该暴露出去  , 应该写日志
+                })
+            }else{
+                res.json({
+                    status:'success',
+                    msg:'收藏成功',
+                    data: cnews
+                })
+            }
+        })
+    }else{
+        res.json({
+            status:'fail',
+            msg: '收藏失败',
+            data: '缺少参数'
+        })
+    }
+})
+
+app.post('/cancelCollect',(req,res)=>{
+    var uid = req.body.uid;
+    var aid = req.body.aid;
+    if(uid && aid){
+        collectmodel.remove({uid,aid},(err,delnews)=>{
+            if(err){
+                res.json({
+                    status:'fail',
+                    msg: '取消收藏失败',
+                    data: err
+                })
+            }else{
+                res.json({
+                    status:'success',
+                    msg: '取消收藏成功',
+                    data: 'del:' + delnews.deletedCount
+                })
+            }
+        })
+
+    }
 
 })
+
+
+app.post('/clist',(req,res)=>{
+    var uid = req.body.uid;
+    if(uid){
+        collectmodel.find({uid}).populate('aid','_id title pubtime picture picture source type').exec((err,cs)=>{
+            if(err){
+                res.json({
+                    status:'fail',
+                    msg: '查询失败',
+                    data: err
+                })
+            }else{
+                res.json({
+                    status: 'success',
+                    msg : '查询成功',
+                    data : cs
+                })
+            }
+        })
+
+
+       
+    }else{
+        res.json({
+            status:'fail',
+            msg:'缺少uid',
+            data: ''
+        })
+    }
+})
+
+
 
 
 app.listen(82)
