@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>注册</title>
+    <title>搜索</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
         .index{
@@ -24,53 +24,8 @@
             box-sizing: border-box;
             padding-left: 10px;
             padding-right: 10px;
-        }
-
-        .nav{
-            flex: 1;
-            overflow-x: auto;
-        }
-        .nav>ul{
-            display: flex;
-            height: 40px;
             align-items: center;
-            flex-wrap: nowrap;
         }
-
-        .nav>ul>li{
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-
-        .nav>ul>li.cur a{
-            font-size: 19px;
-            font-weight: 600;
-        }
-        .nav>ul>li>a{
-            color: #ffffff;
-            font-size: 16px; 
-        }
-
-        .search{
-            width: 40px;
-            height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .s_btn{
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: url(images/search.png) no-repeat;
-            background-size: contain;
-        }
-
-
-
-
-
         .content{
             flex: 1;
             overflow-y: auto;
@@ -128,76 +83,75 @@
             width: 100%;
         }
 
-        .foot{
-            height: 40px;
-            width: 100%;
-            border-top: 1px solid #c4c4c4;
+        .back_btn{
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .back_btn::before{
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-left: 3px solid #ffffff;
+            border-top: 3px solid #ffffff;
+            transform: rotate(-45deg);
+        }
+
+        .searchbox{
+            height: 65px;
+            box-sizing: border-box;
+            padding-left: 10px;
+            padding-right: 10px;
             display: flex;
-        }
-
-        .foot>a{
-            flex: 1;
-            height: 40px;
-            display: inline-flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: space-around;
-        }
-        .foot>a.sel>span:nth-child(2){
-            color: #de3232;
-        }
-        .foot>a.sel>.indexicon{
-            background: url(images/index2.png);
-            background-size: contain;
         }
 
-        .foot>a.sel>.myicon{
-            background: url(images/my2.png);
-            background-size: contain;
+        .searchbar{
+            border: 1px solid #888888;
+            height: 34px;
+            border-radius: 5px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        .searchbar>input{
+            flex: 1;
+            appearance: none;
+            -webkit-appearance: none;
+            border: 0;
+            height: 32px;
+            outline: none;
+            text-indent: 10px;
+            font-size: 16px;
+            color: #c4c4c4;
         }
 
-        
-        .indexicon{
+        .searchbar>span{
             display: inline-block;
-            width: 15px;
-            height: 15px;
-            background: url(images/index1.png);
-            background-size: contain;
+            width: 32px;
+            height: 32px;
+            background: url(images/search2.png) no-repeat;
+            background-size: 70%;
+            background-position: center;
+            margin-right: 10px;
         }
-        .myicon{
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            background: url(images/my1.png);
-            background-size: contain;
-        }
-        
-        .foot>a>span:nth-child(2){
-            color: #787878;
-            font-size: 12px;
-            margin-top: -10px;
-        }
-        
-
     </style>
 </head>
 <body> 
 
     <div class="index">
         <div class="head">
-            <div class="nav">
-                <ul>
-                    <li class="cur"><a>财经</a></li>
-                    <li><a>体育</a></li>
-                    <li><a>新闻</a></li>
-                    <li><a>娱乐</a></li>
-                    <li><a>科技</a></li>
-                </ul>
-            </div>
-            <div class="search">
-                <a class="s_btn"></a>
+            <a class="back_btn">返回</a>
+        </div>
+
+        <div class="searchbox">
+            <div class="searchbar">
+                <input type="text">
+                <span></span>
             </div>
         </div>
+
         <div class="content">
             <ul>
                 <li>
@@ -370,16 +324,7 @@
                 </li>
             </ul>
         </div>
-        <div class="foot">
-            <a>
-                <span class="indexicon"></span>
-                <span>首页</span>
-            </a>
-            <a class="sel">
-                <span class="myicon"></span>
-                <span>我的</span>
-            </a>
-        </div>
+      
     </div>
 
     

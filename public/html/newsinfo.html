@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻详情</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .index{
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .head{
+            height: 40px;
+            width: 100%;
+            background-color: #dd3635;
+            display: flex;
+            box-sizing: border-box;
+            padding-left: 10px;
+            padding-right: 10px;
+            align-items: center;
+        }
+        .content_info{
+            flex: 1;
+            overflow-y: auto;
+            box-sizing: border-box;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        
+
+        .back_btn{
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .back_btn::before{
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-left: 3px solid #ffffff;
+            border-top: 3px solid #ffffff;
+            transform: rotate(-45deg);
+        }
+
+
+        .foot{
+            height: 40px;
+            width: 100%;
+            border-top: 1px solid #c4c4c4;
+            display: flex;
+        }
+
+        .cbox{
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: flex-end;
+            box-sizing: border-box;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .coll_btn{
+            display: inline-flex;
+            font-size: 12px;
+            color: #dd3635;
+            align-items: center;
+        }
+
+        .coll_btn::before{
+            content: '';
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: url(images/coll2.png) no-repeat;
+            background-size: contain;
+            margin-right: 5px;
+        }
+
+        .cancel_btn{
+            display: inline-flex;
+            font-size: 12px;
+            color: #dd3635;
+            align-items: center;
+        }
+
+        .cancel_btn::before{
+            content: '';
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: url(images/coll1.png) no-repeat;
+            background-size: contain;
+            margin-right: 5px;
+        }
+
+        .titlebox{
+            box-sizing: border-box;
+            padding: 12px 0;
+        }
+
+        .titlebox>h1{
+            font-size: 24px;
+            color: #222222;
+        }
+
+        .infoitem{
+            box-sizing: border-box;
+            padding: 5px 0;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .source{
+            color: #222222;
+            font-size: 16px;
+            margin-right: 8px;
+            line-height: 20px;
+        }
+        .pubtime{
+            font-size: 14px;
+            color: #a5a5a5;
+            line-height: 15px;
+        }
+
+        .infobox>p.one-p{
+            font-size: 16px;
+            color: #222222;
+            margin-bottom: 10px;
+        }
+
+        .infobox>p.one-p img{
+            width: 100%;
+        }   
+    </style>
+</head>
+<body> 
+
+    <div class="index">
+        <div class="head">
+            <a class="back_btn">返回</a>
+        </div>
+        <div class="content_info">
+           
+            <div class="titlebox">
+                <h1>黄金的1600时代来了，熟悉的味道,黄金的1600时代来了，熟悉的味道</h1>
+                <div class="infoitem">
+                    <span class="source">
+                        来源：凤凰网
+                    </span>
+                    <span class="pubtime">09-21 09:00</span>
+                </div>
+            </div>
+
+
+
+            <div class="infobox">
+                <!--导语-->
+                <p class="one-p">大家好，很久不见。</p>
+                <p class="one-p">已经有两年时间，没有更新微信公众号跟图表家APP上专栏的观点，主要是懒，懒的主要原因还是因为这两年图表家帮我实现了“交易的自动化”，我的大部分交易资金都在自动化交易，无论是策略的制定还是交易过程，自动化的确是高效，解放了我。</p>
+                <p class="one-p">基本面我看得越来越少，主要精力还是在价格分析，闲暇时间里还是会在图表家APP上看一些主流市场的交易品种走势，寻找到一些可以交易的机会，简称“投机”。</p>
+                <p class="one-p">当然大的经济环境还是会思考和预判，然后根据大环境的变化来看一些大类资产的未来三五年的机会。比如说可以买一点黄金，看空一段时间的原油，不看好美股等。数字货币很火，但我还没有参与投机，没看懂他们的价值，不太相信价格背后的逻辑。</p>
+                <p class="one-p"><img src="https://inews.gtimg.com/newsapp_bt/0/11372181032/1000" class="content-picture">
+                </p>
+                <p class="one-p">还是说回黄金吧，黄金已经连续5个交易日维持1600上方了。</p>
+                <p class="one-p">1600这个数字很熟悉，很多比较早期关注我的小伙伴都是因为看到了我2013年有10手1600的黄金空单。</p>
+                <p class="one-p">1600距离2015年11月30日的1046已经涨了554美金，涨幅52.96%.</p>
+                <p class="one-p">放在两年前，很多人还不相信黄金会上涨至1495呢，而如今价格早已在1600上方，最高到过1680了。</p>
+                <p class="one-p">咱们在2017年2月份更新的新年展望里提到，周线级别下降楔形的破位目标是在1495，那会价格是1225.</p>
+                <p class="one-p">一起回答几个问题</p>
+                <p class="one-p">1.现在的价格还能买吗？</p>
+                <p class="one-p">这个问题问得最多，但其实问得最没水平。对于日内交易者来说，这个问题意义在于寻找一个入场点买入；对于一个打算应对大环境的投资者来说，黄金的金融功能还在，所以说可以买。</p>
+                <p class="one-p">对于投机者来说，有一点需要留意，现在每天黄金波动的高低价差已经不是十几块了，而是三五十美元，甚至上百美元。所以，你更要控制你的仓位。</p>
+                <p class="one-p">2.现在的价格可以做空吗？</p>
+                <p class="one-p">跟第一个问题同理，这个日内投机无所谓的，你寻找个你能承受的位置入场就可以，每天都有足够的理由让你入场做空和做多。问题点在于你是否可以执行，你执行的样本是否够大，你不能用一次交易来验证一个交易逻辑。</p>
+                <p class="one-p">3.接下来怎么看，1680是顶吗？</p>
+                <p class="one-p">散户最喜欢的是猜顶和猜底，顶和底没啥好猜的，你赚的钱应该是吃鱼肚子。把精力花在猜顶和底上太浪费了，还不如去买大小呢。</p>
+                <p class="one-p"><img src="https://inews.gtimg.com/newsapp_bt/0/11372181033/1000" class="content-picture">
+                </p>
+                <p class="one-p">昨天好不容易约到理发师剪了个头发，心情很愉悦，晚上临睡前发了个朋友圈，说想拉个群直播一下我的交易账户：一个是内盘的，一个是外盘的。</p>
+                <p class="one-p">这个直播其实就一件事，分享我的交易过程，比如我今天做个空单，然后发群里给大家看。分享一点我的交易逻辑，以及一些思考。</p>
+                <p class="one-p">纯粹的一时兴起，所以我就干脆象征性收费199块。199买不了我啥义务，但我可能会因此而要想着对这个群负责，时不时得分享一点策略。</p>
+                <p class="one-p">你如果有兴趣就一起来。</p>
+                <div id="Status"><div data-reactroot="" class="article-status"><div></div><div class="statement">免责声明：本文来自腾讯新闻客户端自媒体，不代表腾讯网的观点和立场。</div></div></div>
+            
+                
+            </div>
+            
+        </div>
+        <div class="foot">
+            <div class="cbox">
+                <!-- <a class="coll_btn">收藏</a> -->
+
+                <a class="cancel_btn">取消收藏</a>
+                
+            </div>
+            
+        </div>
+    </div>
+
+    
+    <!-- 
+        文章内容图片处理,  
+        如果 图片的大小 大于屏幕 则按屏幕宽度显示
+        如果 图片的大小 小于大于屏幕 则按图片原尺寸显示
+        
+        居中
+    -->
+    
+</body>
+</html>
