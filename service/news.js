@@ -206,7 +206,7 @@ app.post('/news',(req,res)=>{
     
     if(type){
 
-        newsmodel.find({type:'财经'},'_id title pubtime media type').limit(size).skip(size*(page-1)).exec((err,ns)=>{
+        newsmodel.find({type},'_id title pubtime media type picture').limit(size).skip(size*(page-1)).exec((err,ns)=>{
             
             if(err){
                 res.json({

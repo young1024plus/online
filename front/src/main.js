@@ -3,11 +3,21 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-Vue.config.productionTip = false
+
 import 'weui';
 import weui from 'weui.js';
 
+
+import axios from './util/axios'
+
+
+Vue.config.productionTip = false
+
+
+
+
 Vue.prototype.$weui = weui;
+Vue.prototype.$axios = axios;
 
 
 

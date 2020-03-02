@@ -56,7 +56,8 @@ axios({
             if(imgs<0){
                 picture = null;
             }else{
-                picture = $1('.content-picture').eq(0).attr('src');
+                let purl = $1('.content-picture').eq(0).attr('src');
+                picture = purl!=undefined?'https:'+purl : null
             }
             
 
