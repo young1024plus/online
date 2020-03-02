@@ -9,15 +9,16 @@ axios({
     method:'get',
     responseType:'arraybuffer'
 }).then( res=>{
-    var html = iconv.decode(res.data,'gb2312')
+    let html = iconv.decode(res.data,'gb2312')
     // console.log(html)
 
-    var $ = cheerio.load(html,{decodeEntities: false})
+    let $ = cheerio.load(html,{decodeEntities: false})
 
     // console.log( $('.list li').eq(2).find('a').attr('href'));
-    var list = $('.list li');
-    for(var i=0; i<list.length; i++){
-        var newshref = $('.list li').eq(i).find('a').attr('href');
+    let list = $('.list li');
+    console.log(list.length)
+    for(let i=0; i<list.length; i++){
+        let newshref = $('.list li').eq(i).find('a').attr('href');
 
         axios({
             url: newshref,
@@ -26,32 +27,32 @@ axios({
         }).then( res=>{
             // res 是bufer ,  要把buffer 转换成 文字
             // console.log(res)
-            var html  = iconv.decode(res.data,'gb2312')
+            let html  = iconv.decode(res.data,'gb2312')
            
-            var $1 = cheerio.load(html,{decodeEntities: false});
+            let $1 = cheerio.load(html,{decodeEntities: false});
            
-            var title = $1('.LEFT h1').html();
+            let title = $1('.LEFT h1').html();
             
-            var content = $1('.content-article').html()
+            let content = $1('.content-article').html()
         
         
-            var pubtime;
-            try {
-                var info = $1('script').eq(5).html();
-                var info2 = info.split('=');
-                var obj = JSON.parse(info2[1])
-                var oldtime = obj.pubtime;
-                var dd = new Date(oldtime) 
+            let pubtime;
+            // try {
+                let info = $1('script').eq(5).html();
+                let info2 = info.split('=');
+                let obj = JSON.parse(info2[1])
+                let oldtime = obj.pubtime;
+                let dd = new Date(oldtime) 
         
                 pubtime = dd.getTime()
-            } catch (error) {
-                pubtime = new Date().getTime;
-            }
+            // } catch (error) {
+                // pubtime = new Date().getTime;
+            // }
             
         
-            var imgs = $1('.content-picture');
+            let imgs = $1('.content-picture');
         
-            var picture;
+            let picture;
             if(imgs<0){
                 picture = null;
             }else{
@@ -59,21 +60,21 @@ axios({
             }
             
 
-            var media;
+            let media;
             
-            try {
+            // try {
                 media = obj.media;
-            } catch (error) {
-                media = '腾讯'
-            }
+            // } catch (error) {
+                // media = '腾讯'
+            // }
 
 
             
-            var source = newshref;
-            var type = '财经';
+            let source = newshref;
+            let type = '财经';
 
 
-            var news = newsmodel({
+            let news = newsmodel({
                 title,
                 content,
                 pubtime,
@@ -88,7 +89,7 @@ axios({
                 if(err){
                     console.log('保存失败')
                 }else{
-                    console.log('保存成功')
+                    console.log( i+ ':保存成功')
                 }
             })
             

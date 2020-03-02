@@ -24,9 +24,22 @@ var storage = multer.diskStorage({
 })
 var upload = multer({ storage: storage })
 const app = express();
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(express.static(path.join(__dirname,'public','avatar')))
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname,'public')));
 
+
+// 允许跨域
+app.use(
+    function(req,res,next){
+        res.header({ 
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'X-Requested-With',
+            'Access-Control-Allow-Methods': 'POST'//,GET,OPTIONS,PUT,DETELE
+        })
+        next();
+    }   
+)
 
 app.post('/sign',upload.single('avatar'),(req,res)=>{
     var username = req.body.username;
