@@ -243,7 +243,7 @@ app.post('/search',(req,res)=>{
        
     if(keyword){
 
-        newsmodel.find({title:{$regex : new RegExp(keyword,'ig')}},'_id title pubtime media type').limit(size).skip(size*(page-1)).exec((err,ns)=>{
+        newsmodel.find({title:{$regex : new RegExp(keyword,'ig')}},'_id title pubtime picture media type').limit(size).skip(size*(page-1)).exec((err,ns)=>{
             
             if(err){
                 res.json({

@@ -46,9 +46,14 @@ export default {
         username: this.username,
         password: this.pw1
       }).then(res=>{
-        // console.log(res)
+        var that = this;
         localStorage.setItem('user', JSON.stringify(res.data.data))
-        this.$weui.toast('登录成功',500)
+        this.$weui.toast('登录成功',{
+          duration:500,
+          callback:function(){
+            that.$router.replace({name:'index'})
+          }
+        })
       })
     }
   }

@@ -4,6 +4,50 @@
   </div>
 </template>
 
+<script>
+export default {
+  name:'app',
+  created(){
+    // console.log('aa')
+    var u = localStorage.getItem('user');
+    if(u){
+      var user = JSON.parse(u);
+      var token = user.token;
+
+      this.$axios.post('/status',{
+        token
+      }).then(res=>{
+        // console.log(res)
+        var that = this;
+        if(res.data.status=='fail'){
+
+          this.$weui.toast(res.data.msg,{
+            duration:1500,
+            callback:function(){
+              localStorage.removeItem('user');
+              that.$router.replace({name:'login'})
+            }
+          })
+
+
+         
+        }
+
+      })
+      
+
+
+
+    }else{
+      this.$router.replace({name:'login'})
+    }
+
+
+  }
+}
+</script>
+
+
 <style>
   *{
     margin: 0;

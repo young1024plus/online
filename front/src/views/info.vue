@@ -228,7 +228,7 @@ export default {
   }
 
   .source {
-    color: #222222;
+    color: #9892f3;
     font-size: 16px;
     margin-right: 8px;
     line-height: 20px;

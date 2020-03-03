@@ -11,7 +11,7 @@
                         <div class="title">{{item.aid.title}}</div>
                         <div class="something">
                             <span class="m_r10">{{item.aid.media}}-{{item.aid.type}}</span>
-                            <span>{{item.aid.pubtime}}</span>
+                            <span>{{gettime(item.aid.pubtime)}}</span>
                         </div>
                     </div>
                     <div class="img">
@@ -43,6 +43,10 @@ export default {
   methods:{
     goinfo(aid){
       this.$router.push({name:'info',params:{id:aid}})
+    },
+    gettime(time) {
+      let d = new Date(parseInt(time));
+      return `${d.getMonth() + 1}月${d.getDate()}日`;
     }
   },
   mounted(){
