@@ -354,7 +354,7 @@ app.post('/cancelCollect',(req,res)=>{
 app.post('/clist',(req,res)=>{
     var uid = req.body.uid;
     if(uid){
-        collectmodel.find({uid}).populate('aid','_id title pubtime picture picture source type').exec((err,cs)=>{
+        collectmodel.find({uid}).populate('aid','_id title pubtime picture media source type').exec((err,cs)=>{
             if(err){
                 res.json({
                     status:'fail',
@@ -381,6 +381,47 @@ app.post('/clist',(req,res)=>{
     }
 })
 
+
+app.post('/checkcollect',(req,res)=>{
+    let newsid = req.body.newsid;
+    let uid = req.body.uid;
+    if(newsid&&uid){
+        collectmodel.find({aid:newsid,uid:uid},(err,as)=>{
+            if(err){
+                res.json({
+                    status:'fail',
+                    msg: '查询失败',
+                    data: err
+                })
+            }else{
+
+                if(as.length>0){
+                    res.json({
+                        status:'success',
+                        msg: '已经收藏',
+                        data: true
+                    })
+                }else{
+                    res.json({
+                        status:'success',
+                        msg: '未收藏',
+                        data: false
+                    })
+                }
+
+
+            }
+
+        })
+    }else{
+        res.json({
+            status:'fail',
+            msg: '查询失败',
+            data: '文档id或者用户id不能为空'
+        })
+
+    }
+})
 
 
 

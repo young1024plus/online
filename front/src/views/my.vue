@@ -1,12 +1,74 @@
-<!DOCTYPE html>
-<html lang="cn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .index{
+<template>
+  
+    <div class="index">
+       
+        <div class="my">
+            <div class="userinfo">
+                <img v-if="user.userinfo" :src="'http://www.young1024.com:82/avatar/'+user.userinfo.avatar">
+                <span v-if="user.userinfo" >{{user.userinfo.username}}</span>
+            </div>
+
+            <div class="mylist">
+                <ul>
+                    <li><a @click="go(user.userinfo._id)">我的收藏</a></li>
+                </ul>
+            </div>
+
+
+            <div class="btnbox">
+                <a class="logout" @click="exit">退出</a>
+            </div>
+
+        </div>
+        <div class="foot">
+            <a @click="$router.replace({name:'index'})">
+                <span class="indexicon"></span>
+                <span>首页</span>
+            </a>
+            <a class="sel">
+                <span class="myicon"></span>
+                <span>我的</span>
+            </a>
+        </div>
+    </div>
+    
+</template>
+
+<script>
+
+
+
+export default {
+  name:'my',
+  data(){
+    return {
+      user:{}
+    }
+  },
+
+  mounted(){
+    var u = localStorage.getItem('user');
+    if(u){
+      this.user = JSON.parse(u)
+    }
+  },
+
+
+  methods:{
+    go(uid){
+      this.$router.push({name:'collect'})
+    },
+    exit(){
+      localStorage.removeItem('user');
+      this.$router.replace({name:'login'})
+    }
+  }
+}
+</script>
+
+
+<style scoped>
+   .index{
             box-sizing: border-box;
             position: fixed;
             top: 0;
@@ -43,12 +105,12 @@
             color: #de3232;
         }
         .foot>a.sel>.indexicon{
-            background: url(images/index2.png);
+            background: url(../assets/images/index2.png);
             background-size: contain;
         }
 
         .foot>a.sel>.myicon{
-            background: url(images/my2.png);
+            background: url(../assets/images/my2.png);
             background-size: contain;
         }
 
@@ -57,14 +119,14 @@
             display: inline-block;
             width: 15px;
             height: 15px;
-            background: url(images/index1.png);
+            background: url(../assets/images/index1.png);
             background-size: contain;
         }
         .myicon{
             display: inline-block;
             width: 15px;
             height: 15px;
-            background: url(images/my1.png);
+            background: url(../assets/images/my1.png);
             background-size: contain;
         }
         
@@ -144,44 +206,6 @@
             color: #ffffff;
             font-size: 14px;
         }
-    </style>
-</head>
-<body> 
-
-    <div class="index">
-       
-        <div class="my">
-            <div class="userinfo">
-                <img src="http://img1.gtimg.com/sports/pics/hv1/98/29/2322/150995543.jpg">
-                <span>username</span>
-            </div>
-
-            <div class="mylist">
-                <ul>
-                    <li><a>我的收藏</a></li>
-                </ul>
-            </div>
+</style>
 
 
-            <div class="btnbox">
-                <a class="logout">退出</a>
-            </div>
-
-        </div>
-        <div class="foot">
-            <a>
-                <span class="indexicon"></span>
-                <span>首页</span>
-            </a>
-            <a class="sel">
-                <span class="myicon"></span>
-                <span>我的</span>
-            </a>
-        </div>
-    </div>
-
-    
-
-    
-</body>
-</html>

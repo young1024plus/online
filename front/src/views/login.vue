@@ -46,7 +46,9 @@ export default {
         username: this.username,
         password: this.pw1
       }).then(res=>{
-        console.log(res)
+        // console.log(res)
+        localStorage.setItem('user', JSON.stringify(res.data.data))
+        this.$weui.toast('登录成功',500)
       })
     }
   }

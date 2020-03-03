@@ -35,11 +35,11 @@
       </ul>
     </div>
     <div class="foot">
-      <a>
+      <a  class="sel">
         <span class="indexicon"></span>
         <span>首页</span>
       </a>
-      <a class="sel">
+      <a @click="$router.replace({name:'my'})">
         <span class="myicon"></span>
         <span>我的</span>
       </a>

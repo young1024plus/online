@@ -18,9 +18,8 @@
     </div>
     <div class="foot">
       <div class="cbox">
-        <!-- <a class="coll_btn">收藏</a> -->
-
-        <a class="cancel_btn">取消收藏</a>
+        <a class="coll_btn" v-if="!flag" @click="collec(info._id)">收藏</a>
+        <a class="cancel_btn" v-else @click="cancel(info._id)">取消收藏</a>
       </div>
     </div>
   </div>
@@ -31,21 +30,74 @@ export default {
   name: "info",
   data() {
     return {
-      info:{}
+      info:{},
+      uinfo:{},
+      flag : false
     };
   },
   mounted(){
     // console.log(this.$route.params.id);
-
     this.$axios.post('/newsinfo',{newsid:this.$route.params.id}).then(res=>{
        if(res.data.status == 'success'){
          this.info = res.data.data
+
+          var u = localStorage.getItem('user')
+          if(u){
+            this.uinfo = JSON.parse(u);
+          }else{
+            this.uinfo = u;
+          }
+
+          this.$axios.post('/checkcollect',{
+            newsid: this.info._id,
+            uid :  this.uinfo.userinfo._id
+          }).then(res=>{
+            // console.log(res)
+            if(res.data.status=='success'){
+              this.flag = res.data.data
+            }
+          })
+
        }else{
          this.$weui.alert(res.data.msg)
        }
-    })
+    });
+
+
+
+    
+
   },
   methods: {
+    collec(aid){
+      // console.log(aid)
+      
+      if(this.uinfo){
+        this.$axios.post('/collect',{
+          uid : this.uinfo.userinfo._id,
+          aid : aid
+        }).then(res=>{
+          if(res.data.status == 'success'){
+            this.flag = true
+          }
+        })
+      }else{
+        this.$weui.alert('请先登录!')
+      }
+    },
+    cancel(aid){
+      this.$axios.post('/cancelCollect',{
+        uid : this.uinfo.userinfo._id,
+        aid : aid
+      }).then(res=>{
+        if(res.data.status== 'success'){
+          this.flag = false
+        }
+      })
+
+    },
+
+
     back(){
       this.$router.go(-1)
     },
