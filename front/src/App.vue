@@ -4,11 +4,31 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
   name:'app',
   created(){
     // console.log('aa')
+
+    /*
+
+
+      整个项目要登录才能使用,   除了登录页面和注册页面
+      
+      如果已经登录,就不能再访问登录和注册页面了,
+
+      在没有登录的情况下: 在 导航守卫中 判断, 除了 登录和登录 ,其他页面不能访问
+      如果是 登录状态, 则相反
+
+
+
+      在App.vue判断一次即可, 
+      
+
+    */
+
     var u = localStorage.getItem('user');
     if(u){
       var user = JSON.parse(u);

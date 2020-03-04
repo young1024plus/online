@@ -32,7 +32,7 @@
 
     <div class="m_t15">
       <div class="tar">
-        <a href="login.html" class="link_btn">登录</a>
+        <a class="link_btn" @click="$router.push({name:'index'})">登录</a>
       </div>
     </div>
   </div>

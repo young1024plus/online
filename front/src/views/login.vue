@@ -18,7 +18,7 @@
         <div class="m_t15">
 
             <div class="tar">
-                <a href="sign.html" class="link_btn">注册</a>
+                <a class="link_btn" @click="$router.push({name:'sign'})">注册</a>
             </div>
 
         </div>
