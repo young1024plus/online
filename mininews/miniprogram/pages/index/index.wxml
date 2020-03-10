@@ -1,0 +1,35 @@
+<wxs src="../../util/common.wxs" module="tools" />
+<view class="nav">
+  <view class="navlist">
+    <scroll-view scroll-x="true" style="height:80rpx;">
+
+      <view class="nvli">
+        <view class="{{index==cur?'cur':''}}" wx:for="{{types}}" wx:key="index" data-index="{{index}}" bindtap="swi">{{item}}</view>
+      </view>
+
+    </scroll-view>
+  
+  </view>
+  <view class="sbtn">
+    <navigator url="/pages/search/search" open-type="navigate">
+      <image mode="aspectFit" src="../../images/search.png"></image>
+    </navigator>
+  </view>
+</view>
+
+<view style="height: 80rpx;"></view>
+
+<view class="list">
+  <view class="li" wx:for="{{list}}" wx:key="index" data-newsid="{{item._id}}" bindtap="goinfo">
+    <view class="box1">
+      <view class="title">{{item.title}}</view>
+      <view class="media"><text>{{item.media}}-{{item.type}}</text> <text> {{ tools.formatTime(item.pubtime) }}</text></view>
+    </view>
+    <view class="box2">
+      <image wx:if="{{item.picture}}" mode="aspectFill" src="{{item.picture}}"></image>
+      <view class="noimg" wx:else>无图</view>
+      
+    </view>
+  </view>
+
+</view>

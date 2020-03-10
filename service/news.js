@@ -368,10 +368,7 @@ app.post('/clist',(req,res)=>{
                     data : cs
                 })
             }
-        })
-
-
-       
+        }) 
     }else{
         res.json({
             status:'fail',

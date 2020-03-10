@@ -1,0 +1,41 @@
+
+<view class="item">
+  <input class="inp" placeholder="用户名" bindinput="checkUserName"></input>
+</view>
+
+
+<view class="item">
+  <input class="inp" type="password" placeholder="密码" bindinput="checkpw1"></input>
+</view>
+
+<view class="item">
+  <input class="inp" type="password" placeholder="重复密码" bindinput="checkpw2"></input>
+</view>
+
+
+<view class="item">
+  <view class="atitle">头像</view>
+  <view class="add" bindtap="cimg">
+
+    <view class="mask" wx:if="{{avatar}}"></view>
+    <image wx:if="{{avatar}}" src="{{avatar}}" class="simg"></image>
+  </view>
+
+  
+</view>
+
+  
+
+<view class="item">
+  <view class="sign_btn" bindtap="sign">注册</view>
+</view>
+
+
+
+
+<view class="item">
+  <view class="link_btn"><navigator open-type="navigate" url="/pages/login/login">登录</navigator></view>
+</view>
+
+
+

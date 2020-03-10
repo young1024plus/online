@@ -1,0 +1,34 @@
+<!-- <view class="top1">
+  <view class="back_btn">
+    返回
+  </view>
+</view> -->
+<wxs src="../../util/common.wxs" module="tools" />
+<view class="top2">
+  <view class="searchbar">
+    <input placeholder="请输入新闻标题" bindinput="savekey" bindconfirm="search"></input>
+    <view bindtap="search">
+      <image mode="aspectFit" src="../../images/search2.png"></image>
+    </view>
+  </view>
+</view>
+
+
+<view style="height:110rpx"></view>
+
+
+
+<view class="list">
+  <view class="li" wx:for="{{list}}" bindtap="goinfo" data-newsid="{{item._id}}" wx:key="index">
+    <view class="box1">
+      <view class="title">{{item.title}}</view>
+      <view class="media"><text>{{item.media}}-{{item.type}}</text>
+      <text>{{tools.formatTime(item.pubtime) }}</text></view>
+    </view>
+    <view class="box2">
+      <image mode="widthFix" src="{{item.picture}}"></image>
+    </view>
+  </view>
+
+
+</view>

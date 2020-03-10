@@ -1,0 +1,10 @@
+function formatTime(time){
+  var d = getDate();
+  d.setTime(time)
+  return d.getMonth() + 1 + "月" + d.getDate() + "日"
+}
+
+
+module.exports = { 
+  formatTime: formatTime
+};

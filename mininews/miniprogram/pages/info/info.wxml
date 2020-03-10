@@ -1,0 +1,46 @@
+<wxs src="../../util/common.wxs" module="tools" />
+  
+
+<!-- <view class="top1">
+  <view class="back_btn">
+    返回 
+  </view>
+</view>
+
+<view style="height:80rpx;"></view>
+
+ -->
+ 
+
+<view class="info">
+  <view class="title">{{info.title}}</view>
+  <view>
+    <text class="media">来源：{{info.media}}</text>
+    <text class="time">{{tools.formatTime(info.pubtime)}}</text>
+  </view>
+
+  <view class="content">
+
+    <rich-text nodes="{{info.content}}"></rich-text>
+  
+  </view>
+
+</view>
+
+
+
+
+
+
+
+<view style="height:70rpx"></view>
+<view class="bot">
+  <!-- <view class="coll_btn">
+    <image src="../../images/coll1.png"></image>
+    <text>取消收藏</text>
+  </view> -->
+  <view class="coll_btn">
+    <image src="../../images/coll2.png"></image>
+    <text>收藏</text>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+
+<view class="item">
+  <input class="inp" placeholder="用户名" bindinput="checkusername"></input>
+</view>
+
+
+<view class="item">
+  <input class="inp" type="password" placeholder="密码" bindinput="checkpw" ></input>
+</view>
+
+
+
+<view class="item">
+  <view class="sign_btn" bindtap="login">登录</view>
+</view>
+
+<view class="item">
+  <view class="link_btn"> <navigator open-type="navigate" url="/pages/sign/sign">注册</navigator></view>
+</view>
+
+
