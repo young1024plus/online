@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    user:{},
+    loginStatus: false
   },
 
   /**
@@ -26,6 +27,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var userstr = wx.getStorageSync('user');
+    try{
+      var user = JSON.parse(userstr)
+    }catch(err){
+
+    }
+    if(userstr){
+      this.setData({
+        loginStatus:true,
+        user: user
+      })
+    }
+ 
 
   },
 
@@ -56,11 +70,16 @@ Page({
   onReachBottom: function () {
 
   },
+  logout:function(){
+    wx.removeStorageSync('user');
+    this.setData({
+      loginStatus: false
+    })
+  },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  gocoll:function(){
+    wx.navigateTo({
+      url: '/pages/collect/collect',
+    })
   }
 })

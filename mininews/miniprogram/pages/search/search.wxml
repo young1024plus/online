@@ -26,7 +26,7 @@
       <text>{{tools.formatTime(item.pubtime) }}</text></view>
     </view>
     <view class="box2">
-      <image mode="widthFix" src="{{item.picture}}"></image>
+      <image mode="aspectFill" src="{{item.picture}}"></image>
     </view>
   </view>
 

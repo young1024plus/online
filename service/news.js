@@ -295,8 +295,8 @@ app.post('/newsinfo',(req,res)=>{
 
 
 app.post('/collect',(req,res)=>{
-    var uid = req.body.uid;
-    var aid = req.body.aid;
+    var uid = req.body.uid;  //用户id
+    var aid = req.body.aid;  //新闻id
     if(uid && aid){
         var coll = new collectmodel({
             uid,

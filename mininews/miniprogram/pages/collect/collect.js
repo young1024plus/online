@@ -1,11 +1,14 @@
-// miniprogram/pages/collect/collect.js
+
+var req = require('../../util/req.js');
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list:[]
   },
 
   /**
@@ -26,6 +29,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    var userstr = wx.getStorageSync('user');
+    var user = JSON.parse(userstr);
+
+    req('/clist',{uid: user.userinfo._id},
+      function(res){
+        // console.log(res.data.data)
+        if(res.data.status == 'success'){
+          that.setData({
+            list: res.data.data
+          })
+        }
+      },
+      function(err){
+
+      }
+    )
+
+
 
   },
 
@@ -56,11 +78,12 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goinfo:function(e){
+    console.log(e);
+    
+    wx.navigateTo({
+      url: '/pages/info/info?newsid=' + e.currentTarget.dataset.newsid,
+    })
   }
+
 })

@@ -7,15 +7,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    html:'',
-    info:{}
+    info:{},
+    collectStatus: false,
+    newsid:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.newsid)
+    // console.log(options.newsid)
+    this.setData({
+      newsid: options.newsid
+    })
+
     var that = this;
     req('/newsinfo', { newsid: options.newsid},function(res){
       // console.log(res)
@@ -25,6 +30,29 @@ Page({
     },function(err){
       console.log(err)
     })
+    var userstr = wx.getStorageSync('user');
+    try{
+      var user = JSON.parse(userstr)
+    }catch(err){
+    }
+    
+    if(userstr){
+      req('/checkcollect', {
+        newsid: options.newsid,
+        uid: user.userinfo._id
+      },
+        function (res) {
+          that.setData({
+            collectStatus: res.data.data
+          })
+        },
+        function (err) {
+        }
+      )
+    }
+    
+
+
 
 
   },
@@ -40,11 +68,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var h = '\n            <!--导语-->\n            <p class=\"one-p\">3月2日，合肥市卫健委在官网发布《关于国风塑业新冠病毒无症状感染者许某某的情况通报》（下称“《情况通报》”）。</p>\n            <p class=\"one-p\"><img src=\"//inews.gtimg.com/newsapp_bt/0/11396162218/1000\" class=\"content-picture\">\n            </p>\n            <p class=\"one-p\">《情况通报》显示，3月1日上午9：30，市二院通过疫情网报告一例新冠病毒无症状感染者许某某，男，43岁，安徽国风塑业股份有限公司一分厂拉伸车间员工，家庭住址：瑶海区人才苑小区。</p>\n            <p class=\"one-p\">资料显示，安徽国风塑业股份有限公司（证券简称：国风塑业 000859）成立于1998年9月23日，同年11月19日在深交所挂牌上市，其下属单位有薄膜一分厂、二分厂、三分厂、四分厂、电容膜分厂和复合材料分公司等，主营双向拉伸聚丙烯薄膜和双向拉伸聚酯薄膜等包装膜材料和电子信息用膜材料等。</p>\n            <p class=\"one-p\">截至发稿，新京报记者多次拨打国风塑业董秘公开联系电话，暂未取得联系。截至午间休市，国风塑业股价上涨1.78%，报5.73元/股。</p>\n            <p class=\"one-p\">网上流传一份合肥高新技术产业开发区管理委员会（下称“合肥开发区管委会”）向国风塑业下发的停产通知，经新京报记者致电合肥开发区管委会核实，文件确实由该管委会下发。</p>\n            <p class=\"one-p\"><img src=\"//inews.gtimg.com/newsapp_bt/0/11396162219/1000\" class=\"content-picture\">\n            </p>\n            <p class=\"one-p\">停产通知显示，国风塑业已被责令停产整顿，待各项防控措施落实后方可复工。同时，2月26日，当地区经贸局联合疾控中心督察疫情防控工作中，发现国风塑业存在防疫工作不到位的现象，且国风塑业近期存在员工发热就医未及时上报的问题。</p>\n            <p class=\"one-p\">合肥开发区管委会方面对新京报记者表示，通知中所指发热员工，就是合肥卫健委3月2日发布的《情况通报》中的确诊员工，同时，其表示，至少14天后才能复工。</p>\n            <p class=\"one-p\">随后，记者致电合肥卫健委，当询问“停产通知显示员工2月26日已被发现有发热现象，为何不属于有症状”时，对方表示“以官网发布的为准”。</p>\n            <p class=\"one-p\">合肥卫健委官网3月2日发布的《情况通报》显示，3月1日上午9：30，市二院通过疫情网报告一例新冠病毒无症状感染者许某某，是安徽国风塑业股份有限公司一分厂拉伸车间员工。</p>\n            <p class=\"one-p\">合肥卫健委官网显示，在2月26日-3月1日，全市新增新冠肺炎确诊病例0例，新增疑似病例0例。截至3月1日24时，全市累计报告新冠肺炎确诊病例174例，累计治愈出院病例147例，累计死亡病例1例，全市在院治疗确诊病例26例，无危重症病例。累计医学观察密切接触者4682人，尚在医学观察78人。</p>\n            <p class=\"one-p\">《情况通报》显示，许某某及其工作和居住场所已按规定采取相应措施；同时根据《新冠肺炎防控方案（第五版）》规定，疾控部门会同高新区、瑶海区、市国资委，立即组织对该无症状感染者开展流行病学调查，启动密切接触者追踪、集中隔离和核酸检测等工作。</p>\n            <p class=\"one-p\">截至3月2日8时，高新区已排查许某某密切接触者167人，均予以集中隔离并采样送检，目前核酸检测结果均为阴性。瑶海区已追踪隔离许某某密切接触者10人，均予以集中隔离并采样送检，目前核酸检测结果均为阴性。</p>\n            <p class=\"one-p\">此外，为进一步扩大筛查范围，高新区还组织对安徽国风塑业股份有限公司一分厂另外269名员工开展了第三方快速筛查，结果正常。</p>\n            <p class=\"one-p\">新京报记者 肖玮 李云琦 编辑 孙勇 校对 陈荻雁</p>\n            <div id=\"Status\"></div>\n          '
-
-    this.setData({
-      html:h
-    })
+  
   },
 
   /**
@@ -79,8 +103,83 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title:'热点新闻',
+      path:'/pages/index/index?page=info&newsid='+this.data.newsid
+    }
   },
+
+  collect:function(){
+    var that = this;
+
+    var userstr = wx.getStorageSync('user');
+    var user ;
+    try{
+      user = JSON.parse(userstr);
+    }catch(err){
+
+    }
+
+   
+    
+    if(user){
+      req('/collect', {
+        uid: user.userinfo._id,
+        aid: that.data.newsid
+      },
+        function (res) {
+          if (res.data.status == "success") {
+            that.setData({
+              collectStatus: true
+            })
+          }
+        },
+        function (err) {
+          console.log(err)
+        }
+      )
+    }else{
+      wx.showToast({
+        title: '需要登录',
+        icon: 'none',
+        duration:2000,
+        success:function(){
+          setTimeout(function(){
+            wx.navigateTo({
+              url: '/pages/login/login?page=info&newsid='+that.data.newsid,
+            })
+          },2000)
+        }
+      })
+    }
+    
+
+
+
+    
+  },
+
+  cancelCollect: function(){
+    var that = this;
+
+    var userstr = wx.getStorageSync('user');
+    var user = JSON.parse(userstr)
+    req('/cancelCollect', {
+      uid: user.userinfo._id,
+      aid: that.data.newsid
+    },
+      function (res) {
+        if (res.data.status == "success") {
+          that.setData({
+            collectStatus: false
+          })
+        }
+      },
+      function (err) {
+        console.log(err)
+      }
+    )
+  }
 
 
 })

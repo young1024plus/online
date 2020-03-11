@@ -17,6 +17,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    
+    console.log(options)
+
+    if (options.page == 'info') {
+      wx.navigateTo({
+        url: '/pages/info/info?newsid=' + options.newsid,
+        success: function () {
+          wx.removeStorageSync('jump')
+        }
+      })
+    }
+
+
+    // var user=  wx.getStorageSync('user')
+    // console.log(user);
+    // if(!user){
+    //   wx.redirectTo({
+    //     url: '/pages/login/login',
+    //   })
+    // }
 
   },
 
@@ -37,6 +58,18 @@ Page({
         list:res.data.data
       })   
     })
+
+    var jump = wx.getStorageSync('jump')
+
+    if (jump.page == 'info') {
+      wx.navigateTo({
+        url: '/pages/info/info?newsid=' + jump.newsid,
+        success: function () {
+          wx.removeStorageSync('jump')
+        }
+      })
+    }
+
   },
 
   /**
@@ -104,6 +137,8 @@ Page({
     wx.navigateTo({
       url: '/pages/info/info?newsid='+e.currentTarget.dataset.newsid,
     })
+
+    console.log(e.currentTarget.dataset.newsid)
 
   }
 

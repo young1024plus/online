@@ -35,11 +35,11 @@
 
 <view style="height:70rpx"></view>
 <view class="bot">
-  <!-- <view class="coll_btn">
+  <view class="coll_btn" wx:if="{{collectStatus}}" bindtap="cancelCollect">
     <image src="../../images/coll1.png"></image>
     <text>取消收藏</text>
-  </view> -->
-  <view class="coll_btn">
+  </view>
+  <view class="coll_btn" wx:else bindtap="collect">
     <image src="../../images/coll2.png"></image>
     <text>收藏</text>
   </view>

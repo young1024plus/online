@@ -9,14 +9,18 @@ Page({
    */
   data: {
     username:'',
-    pw:''
+    pw:'',
+    jump: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // console.log(options)
+    this.setData({
+      jump: options
+    })
   },
 
   /**
@@ -80,31 +84,43 @@ Page({
   },
   login:function(){
     var that = this;
-    // wx.request({
-    //   url: 'http://www.young1024.com:82/login',
-    //   method:'post',
-    //   data:{
-    //     username:that.data.username,
-    //     password : that.data.pw
-    //   },
-    //   success:function(res){
-    //     console.log(res)
-    //   },
-    //   fail:function(err){
-    //     console.log(err)
-    //   }
-    // })
-
+  
     req('/login',{
-      username:that.data.username,
-      password : that.data.pw
-    },
-    function(res){
-      console.log(res)
-    },
-    function(err){
-      console.log(err)
-    }
+        username:that.data.username,
+        password : that.data.pw
+      },
+      function(res){
+        wx.setStorage({
+          key: 'user',
+          data: JSON.stringify(res.data.data),
+          success:function(){
+            wx.showToast({
+              title: '登录成功',
+              duration: 1500,
+              success:function(){
+                wx.setStorage({
+                  key: 'jump',
+                  data: that.data.jump,
+                })
+                wx.switchTab({
+                  url: '/pages/index/index',
+                })
+
+              }
+            })
+          }
+        })  
+
+      },
+      function(err){
+        wx.removeStorage({
+          key: 'user',
+          success: function(res) {
+            
+          },
+        })
+
+      }
     )
 
   }

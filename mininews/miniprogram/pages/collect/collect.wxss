@@ -109,5 +109,5 @@
 }
 
 .box2>image{
-  width: 230rpx;
+  display: inline;
 }

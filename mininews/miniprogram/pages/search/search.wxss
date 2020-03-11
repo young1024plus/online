@@ -106,8 +106,10 @@
 .box2{
   width: 230rpx;
   height: 150rpx;
+  overflow: hidden;
 }
 
 .box2>image{
-  width: 230rpx;
+  /* width: 230rpx; */
+  display: inline;
 }

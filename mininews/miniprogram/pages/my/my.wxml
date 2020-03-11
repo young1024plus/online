@@ -1,15 +1,27 @@
-<view class="info">
-  <image  class="avatar" src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-  <text class="username">username</text>
-</view>
 
-<view class="list">
-  <view class="li">
-    <view>我的收藏</view>
-    <view class="arrow"></view>
+<view wx:if="{{loginStatus}}">
+  <view class="info">
+    <image  class="avatar" src="{{'http://www.young1024.com:82/avatar/'+user.userinfo.avatar}}"></image>
+    <text class="username">{{user.userinfo.username}}</text>
   </view>
+
+  <view class="list">
+    <view class="li" bindtap="gocoll">
+      <view>我的收藏</view>
+      <view class="arrow"></view>
+    </view>
+  </view>
+
+  <view class="logout">
+    <view class="logout_btn" bindtap="logout">退出</view>
+  </view>
+
 </view>
 
-<view class="logout">
-  <view class="logout_btn">退出</view>
+<view wx:else>
+  <view class="logout">
+    <navigator url="/pages/login/login">
+      <view class="logout_btn">去登陆</view>
+    </navigator>
+  </view>
 </view>

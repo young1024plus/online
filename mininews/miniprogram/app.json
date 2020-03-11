@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/collect/collect",
+    "pages/my/my",
     "pages/search/search",
     "pages/login/login",
     "pages/sign/sign",
-    "pages/info/info",
-    "pages/collect/collect",
-    "pages/my/my"
+    "pages/info/info"
   ],
   "window": {
     "backgroundColor": "#CC423B",

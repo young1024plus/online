@@ -1,124 +1,20 @@
-<view class="top1">
-  <view class="back_btn">
-    返回
-  </view>
-</view>
 
-<!-- <view class="top2">
-  <view class="searchbar">
-    <input placeholder="请输入新闻标题"></input>
-    <view>
-      <image mode="aspectFit" src="../../images/search2.png"></image>
-    </view>
-  </view>
-</view> -->
-
-
-<view style="height:80rpx"></view>
+<wxs src="../../util/common.wxs" module="tools" />
 
 
 
 <view class="list">
-  <view class="li">
+ 
+
+  <view class="li" wx:for="{{list}}" wx:key="index" data-newsid="{{item.aid._id}}" bindtap="goinfo">
     <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
+      <view class="title">{{item.aid.title}}</view>
+      <view class="media"><text>{{item.aid.media}}-{{item.aid.type}}</text><text> {{ tools.formatTime(item.aid.pubtime)}}</text></view>
     </view>
     <view class="box2">
-      <image mode="widthFix" src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
+      <image mode="aspectFill"src="{{item.aid.picture}}"></image>
     </view>
   </view>
 
-  <view class="li">
-    <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
-    </view>
-    <view class="box2">
-      <image mode="widthFix"src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-    </view>
-  </view>
-
-  <view class="li">
-    <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
-    </view>
-    <view class="box2">
-      <image mode="widthFix"src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-    </view>
-  </view>
-
-  <view class="li">
-    <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
-    </view>
-    <view class="box2">
-      <image mode="widthFix"src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-    </view>
-  </view>
-
-  <view class="li">
-    <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
-    </view>
-    <view class="box2">
-      <image mode="widthFix"src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-    </view>
-  </view>
-
-
-  <view class="li">
-    <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
-    </view>
-    <view class="box2">
-      <image mode="widthFix"src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-    </view>
-  </view>
-
-
-  <view class="li">
-    <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
-    </view>
-    <view class="box2">
-      <image mode="widthFix"src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-    </view>
-  </view>
-
-  <view class="li">
-    <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
-    </view>
-    <view class="box2">
-      <image mode="widthFix"src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-    </view>
-  </view>
-
-  <view class="li">
-    <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
-    </view>
-    <view class="box2">
-      <image mode="widthFix"src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-    </view>
-  </view>
-
-  <view class="li">
-    <view class="box1">
-      <view class="title">美国“最高制裁”来了，伊朗央行：黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？黔驴技穷？</view>
-      <view class="media"><text> 凤凰网-科技</text><text> 今天11:00</text></view>
-    </view>
-    <view class="box2">
-      <image mode="widthFix"src="https://x0.ifengimg.com/ucms/2020_11/E05AD010490B7CBAEDF7EACAF71D20509F05F61E_w660_h371.jpg"></image>
-    </view>
-  </view>
-
+ 
 </view>
