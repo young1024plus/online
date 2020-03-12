@@ -5,6 +5,14 @@ const path = require('path')
 const crytpo = require("crypto");
 const jwt = require('jsonwebtoken');
 
+const fs = require('fs');
+const https = require('https');
+
+const options = {
+    key: fs.readFileSync('./Nginx/2_news.young1024.com.key'),
+    cert: fs.readFileSync('./Nginx/1_news.young1024.com_bundle.crt')
+}
+
 
 const usermodel = require('./models/userModel');
 const tokenmodel = require('./models/token');
@@ -423,3 +431,6 @@ app.post('/checkcollect',(req,res)=>{
 
 
 app.listen(82)
+
+//http默认端口是80;  https的默认端口是443
+https.createServer(options,app).listen(83)
